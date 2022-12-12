@@ -1,6 +1,7 @@
 package com.lab2;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.SecureRandom;
@@ -26,7 +27,7 @@ public class BlindSignature {
             pubKey = (RSAPublicKey)keypair.getPublic();
 
             String message = "hello";
-            byte [] raw = message.getBytes("UTF8");
+            byte [] raw = message.getBytes(StandardCharsets.UTF_8);
 
             BigInteger m = new BigInteger(raw);
             BigInteger e = pubKey.getPublicExponent();
@@ -76,9 +77,9 @@ public class BlindSignature {
 
             //try to verify using the RSA formula
             BigInteger check = s.modPow(e,n);
+            System.out.println("Encoded message: " + new String(check.toByteArray()));
             System.out.println(m.equals(check));
 
-            //BOTH TESTS RETURN FALSE - s must not be a valid signature of m
         }
         catch(Exception ex) {
             System.out.println("ERROR: ");

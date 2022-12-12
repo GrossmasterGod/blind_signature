@@ -54,6 +54,6 @@ public class DecryptionEncryption {
 //        System.out.println(decrypted);
         int blindDecrypt = blindEncryption(blindEncrypt,new int[]{307,713},r);
         System.out.println(blindDecrypt);
-        
+
     }
 }
